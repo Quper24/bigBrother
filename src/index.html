@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Big brother - Моя библиотека</title>
+  <link rel="stylesheet" href="css/index.min.css">
+  <script defer src="js/index.min.js"></script>
+</head>
+
+<body>
+<section class="library hide">
+  <header class="library__header header">
+    <div class="container header__container">
+      <img class="header__logo" src="img/logo.svg" alt="logo">
+
+      <div class="header__right">
+        <button class="header__btn-add">Добавить книгу</button>
+
+        <button class="header__btn header__btn_search"></button>
+      </div>
+    </div>
+  </header>
+  <div class="container library__titles">
+    <h1 class="library__title">Моя библиотека</h1>
+
+    <p class="library__count">3 книги</p>
+
+    <div class="library__fields fields">
+     <div class="fields__block">
+       <button class="fields__btn fields__item_sort">
+         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <path d="M3 18H9V16H3V18ZM3 6V8H21V6H3ZM3 13H15V11H3V13Z" fill="white"/>
+         </svg>
+
+         <span class="fields__item-text fields__item-text__sort">По рейтингу</span>
+       </button>
+
+       <ul class="fields__list fields__list_sort">
+         <li class="fields__item">от большего</li>
+         <li class="fields__item">от меньшего</li>
+       </ul>
+     </div>
+
+      <div class="fields__block">
+        <button class="fields__btn fields__item_filter">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4.24999 5.61C6.26999 8.2 9.99999 13 9.99999 13V19C9.99999 19.55 10.45 20 11 20H13C13.55 20 14 19.55 14 19V13C14 13 17.72 8.2 19.74 5.61C20.25 4.95 19.78 4 18.95 4H5.03999C4.20999 4 3.73999 4.95 4.24999 5.61Z"
+              fill="white"/>
+          </svg>
+
+          <span class="fields__item-text fields__item-text__filter">Фильтр</span>
+        </button>
+
+        <ul class="fields__list fields__list_filter">
+          <li class="fields__item">хочу прочитать</li>
+          <li class="fields__item">прочитал</li>
+          <li class="fields__item">читаю</li>
+          <li class="fields__item">не дочитал</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container library__list-container">
+    <h2 class="visually-hidden">Список книг</h2>
+    <ul class="library__list">
+      <li class="library__item">
+        <a href="/book" data-navigo>
+          <article class="cart">
+            <div class="cart__picture">
+              <img src="img/1984.jpg" alt="" class="cart__image">
+
+              <button class="cart__label">хочу прочитать</button>
+            </div>
+
+            <div class="cart__content">
+              <h3 class="cart__title">1984</h3>
+
+              <p class="cart__author">Джордж Оруэлл</p>
+
+              <p class="cart__description">Главный герой — Уинстон Смит — живёт в Лондоне, работает в Министерстве
+                правды и является...</p>
+
+              <div class="cart__raiting">
+                <img src="img/stars.svg" alt="Рейтинг 4 из 5" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars-o.svg" alt="" class="cart__raiting-stars">
+              </div>
+            </div>
+          </article>
+        </a>
+      </li>
+
+      <li class="library__item">
+        <a href="/book?id=1" data-navigo>
+          <article class="cart">
+            <div class="cart__picture">
+              <img src="img/no-img.jpg" alt="Обложки нет" class="cart__image">
+
+              <button class="cart__label">хочу прочитать</button>
+            </div>
+
+            <div class="cart__content">
+              <h3 class="cart__title">Гарри Поттер и Философский камень</h3>
+
+              <p class="cart__author">Джоан Роулинг</p>
+
+              <p class="cart__description">Первый роман в серии книг про юного волшебника Гарри Поттера, написанный Дж.
+                К. Роулинг. В нём...</p>
+
+              <div class="cart__raiting">
+                <img src="img/stars.svg" alt="Рейтинг 4 из 5" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+              </div>
+            </div>
+          </article>
+        </a>
+      </li>
+
+      <li class="library__item">
+        <a href="/book?id=2" data-navigo>
+          <article class="cart">
+            <div class="cart__picture">
+              <img src="img/1984.jpg" alt="Обложка Джордж Оруэлл - 1984" class="cart__image">
+
+              <button class="cart__label">хочу прочитать</button>
+            </div>
+
+            <div class="cart__content">
+              <h3 class="cart__title">1984</h3>
+
+              <p class="cart__author">Джордж Оруэлл</p>
+
+              <p class="cart__description">Главный герой — Уинстон Смит — живёт в Лондоне, работает в Министерстве
+                правды и является...</p>
+
+              <div class="cart__raiting">
+                <img src="img/stars.svg" alt="Рейтинг 4 из 5" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars-o.svg" alt="" class="cart__raiting-stars">
+              </div>
+            </div>
+          </article>
+        </a>
+      </li>
+
+      <li class="library__item">
+        <a href="/book?id=3" data-navigo>
+          <article class="cart">
+            <div class="cart__picture">
+              <img src="img/no-img.jpg" alt="Обложки нет" class="cart__image">
+
+              <button class="cart__label">хочу прочитать</button>
+            </div>
+
+            <div class="cart__content">
+              <h3 class="cart__title">Гарри Поттер и Философский камень</h3>
+
+              <p class="cart__author">Джоан Роулинг</p>
+
+              <p class="cart__description">Первый роман в серии книг про юного волшебника Гарри Поттера, написанный Дж.
+                К. Роулинг. В нём...</p>
+
+              <div class="cart__raiting">
+                <img src="img/stars.svg" alt="Рейтинг 4 из 5" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+              </div>
+            </div>
+          </article>
+        </a>
+      </li>
+
+      <li class="library__item">
+        <a href="/book?id=4" data-navigo>
+          <article class="cart">
+            <div class="cart__picture">
+              <img src="img/1984.jpg" alt="Обложка Джордж Оруэлл - 1984" class="cart__image">
+
+              <button class="cart__label">хочу прочитать</button>
+            </div>
+
+            <div class="cart__content">
+              <h3 class="cart__title">1984</h3>
+
+              <p class="cart__author">Джордж Оруэлл</p>
+
+              <p class="cart__description">Главный герой — Уинстон Смит — живёт в Лондоне, работает в Министерстве
+                правды и является...</p>
+
+              <div class="cart__raiting">
+                <img src="img/stars.svg" alt="Рейтинг 4 из 5" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars-o.svg" alt="" class="cart__raiting-stars">
+              </div>
+            </div>
+          </article>
+        </a>
+      </li>
+
+      <li class="library__item">
+        <a href="/book?id=5" data-navigo>
+          <article class="cart">
+            <div class="cart__picture">
+              <img src="img/no-img.jpg" alt="Обложки нет" class="cart__image">
+
+              <button class="cart__label">хочу прочитать</button>
+            </div>
+
+            <div class="cart__content">
+              <h3 class="cart__title">Гарри Поттер и Философский камень</h3>
+
+              <p class="cart__author">Джоан Роулинг</p>
+
+              <p class="cart__description">Первый роман в серии книг про юного волшебника Гарри Поттера, написанный Дж.
+                К. Роулинг. В нём...</p>
+
+              <div class="cart__raiting">
+                <img src="img/stars.svg" alt="Рейтинг 4 из 5" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+                <img src="img/stars.svg" alt="" class="cart__raiting-stars">
+              </div>
+            </div>
+          </article>
+        </a>
+      </li>
+
+
+    </ul>
+  </div>
+
+  <div class="footer">
+    <button class="footer__btn library__add-book" aria-label="добавить книгу"></button>
+  </div>
+</section>
+
+<section class="book hide">
+  <header class="book__header header">
+    <div class="container header__container">
+      <button class="header__btn header__btn_back" id="goBack"></button>
+      <button class="header__btn header__btn_delete"></button>
+    </div>
+  </header>
+
+  <div class="container book__container">
+
+    <div class="book__wrapper-img">
+      <img src="img/1984.jpg" alt="" class="book__image">
+
+      <button class="book__label book__label_desktop">хочу прочитать</button>
+    </div>
+
+    <div>
+      <h2 class="book__title">1984</h2>
+
+      <p class="book__author">Джордж Оруэлл</p>
+
+      <div class="book__raiting">
+        <img src="img/stars.svg" alt="Рейтинг 4 из 5" class="book__raiting-stars">
+        <img src="img/stars.svg" alt="" class="book__raiting-stars">
+        <img src="img/stars.svg" alt="" class="book__raiting-stars">
+        <img src="img/stars.svg" alt="" class="book__raiting-stars">
+        <img src="img/stars-o.svg" alt="" class="book__raiting-stars">
+      </div>
+
+      <h3 class="book__subtitle">Описание</h3>
+
+      <p class="book__description">Главный герой — Уинстон Смит — живёт в Лондоне, работает в Министерстве правды и является членом внешней партии. Он не разделяет партийные лозунги и идеологию и в глубине души сильно сомневается в партии, окружающей действительности и вообще во всём том, в чём только можно сомневаться. Чтобы «выпустить пар» и не совершить какой-нибудь безрассудный поступок, ведёт дневник, в котором старается излагать все свои сомнения. На людях же притворяется приверженцем партийных идей. Однако опасается, что девушка Джулия, работающая в том же министерстве, шпионит за ним и хочет разоблачить его. В то же время полагает, что высокопоставленный сотрудник их министерства, член внутренней партии некий О’Брайен также не разделяет мнения партии и является подпольным революционером.</p>
+
+    </div>
+    <div class="footer">
+      <button class="footer__btn book__label">хочу прочитать</button>
+    </div>
+
+  </div>
+
+
+</section>
+
+
+<section class="add hide">
+  <header class="add__header header">
+    <div class="container header__container">
+      <button class="header__back-btn"></button>
+      <button class="header__search-btn"></button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <h2 class="add__title">Название и описание</h2>
+
+    <div class="footer">
+      <button class="footer__btn add__label">Далее</button>
+    </div>
+
+  </div>
+
+
+</section>
+
+</body>
+
+</html>
