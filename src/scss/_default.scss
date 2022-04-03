@@ -1,0 +1,90 @@
+html {
+  position: relative;
+  box-sizing: border-box;
+  min-width: 360px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Montserrat, Arial, sans-serif;
+  line-height: 1.3;
+  font-size: 12px;
+  font-weight: 400;
+  color: $white; /*цвет под ваш проект*/
+  background-color: $black; /*цвет под ваш проект*/
+  background-image: url(../img/fire.svg);
+  background-position: center top 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+button {
+  display: block;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
+  @include tablet {
+    padding: 0 35px;
+  }
+
+  @include laptop {
+    padding: 0 45px;
+  }
+
+}
+
+.hide {
+  display: none;
+}
