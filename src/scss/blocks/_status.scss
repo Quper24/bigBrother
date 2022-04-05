@@ -1,0 +1,41 @@
+.status {
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+  &__item {
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  &__label {
+    display: inline-block;
+    padding: 8px;
+    cursor: pointer;
+    background-color: $white;
+    font-size: 12px;
+    line-height: 100%;
+    color: $black;
+    border-radius: 16px;
+    border: 1px solid transparent;
+  }
+  &__label:hover {
+    background-color: $secondary;
+  }
+
+  &__item:focus + &__label {
+    border-color: $secondaryDark;
+
+  }
+
+  &__item:checked + &__label {
+    background-color: $primary;
+    border-color: $primary;
+  }
+
+}

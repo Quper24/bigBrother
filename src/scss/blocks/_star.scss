@@ -1,0 +1,37 @@
+.star {
+&__list {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 1px;
+}
+
+
+  &__ico {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    background-image: url("../img/stars-o.svg");
+    background-repeat: no-repeat;
+    background-size: 36px;
+    background-position: center;
+  }
+
+  &__input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 36px;
+    height: 36px;
+    position: absolute;
+
+  }
+
+  &__ico:hover,
+  &__ico:hover ~ &__ico,
+  &__input:checked ~ &__ico {
+    background-image: url("../img/stars.svg");
+  }
+
+}
+

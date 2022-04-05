@@ -10,7 +10,7 @@
   <script defer src="js/index.min.js"></script>
 </head>
 
-<body>
+<body class="body">
 <section class="library hide">
   <header class="library__header header">
     <div class="container header__container">
@@ -29,20 +29,20 @@
     <p class="library__count">3 книги</p>
 
     <div class="library__fields fields">
-     <div class="fields__block">
-       <button class="fields__btn fields__item_sort">
-         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-           <path d="M3 18H9V16H3V18ZM3 6V8H21V6H3ZM3 13H15V11H3V13Z" fill="white"/>
-         </svg>
+      <div class="fields__block">
+        <button class="fields__btn fields__item_sort">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 18H9V16H3V18ZM3 6V8H21V6H3ZM3 13H15V11H3V13Z" fill="white"/>
+          </svg>
 
-         <span class="fields__item-text fields__item-text__sort">По рейтингу</span>
-       </button>
+          <span class="fields__item-text fields__item-text__sort">По рейтингу</span>
+        </button>
 
-       <ul class="fields__list fields__list_sort">
-         <li class="fields__item">от большего</li>
-         <li class="fields__item">от меньшего</li>
-       </ul>
-     </div>
+        <ul class="fields__list fields__list_sort">
+          <li class="fields__item">от большего</li>
+          <li class="fields__item">от меньшего</li>
+        </ul>
+      </div>
 
       <div class="fields__block">
         <button class="fields__btn fields__item_filter">
@@ -56,10 +56,18 @@
         </button>
 
         <ul class="fields__list fields__list_filter">
-          <li class="fields__item">хочу прочитать</li>
-          <li class="fields__item">прочитал</li>
-          <li class="fields__item">читаю</li>
-          <li class="fields__item">не дочитал</li>
+          <li class="fields__item">
+            <button class="fields__button">хочу прочитать</button>
+          </li>
+          <li class="fields__item">
+            <button class="fields__button">прочитал</button>
+          </li>
+          <li class="fields__item">
+            <button class="fields__button">читаю</button>
+          </li>
+          <li class="fields__item">
+            <button class="fields__button">не дочитал</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -74,7 +82,7 @@
             <div class="cart__picture">
               <img src="img/1984.jpg" alt="" class="cart__image">
 
-              <button class="cart__label">хочу прочитать</button>
+              <p class="cart__label">хочу прочитать</p>
             </div>
 
             <div class="cart__content">
@@ -103,7 +111,7 @@
             <div class="cart__picture">
               <img src="img/no-img.jpg" alt="Обложки нет" class="cart__image">
 
-              <button class="cart__label">хочу прочитать</button>
+              <p class="cart__label">хочу прочитать</p>
             </div>
 
             <div class="cart__content">
@@ -132,7 +140,7 @@
             <div class="cart__picture">
               <img src="img/1984.jpg" alt="Обложка Джордж Оруэлл - 1984" class="cart__image">
 
-              <button class="cart__label">хочу прочитать</button>
+              <p class="cart__label">хочу прочитать</p>
             </div>
 
             <div class="cart__content">
@@ -161,7 +169,7 @@
             <div class="cart__picture">
               <img src="img/no-img.jpg" alt="Обложки нет" class="cart__image">
 
-              <button class="cart__label">хочу прочитать</button>
+              <p class="cart__label">хочу прочитать</p>
             </div>
 
             <div class="cart__content">
@@ -190,7 +198,7 @@
             <div class="cart__picture">
               <img src="img/1984.jpg" alt="Обложка Джордж Оруэлл - 1984" class="cart__image">
 
-              <button class="cart__label">хочу прочитать</button>
+              <p class="cart__label">хочу прочитать</p>
             </div>
 
             <div class="cart__content">
@@ -219,7 +227,7 @@
             <div class="cart__picture">
               <img src="img/no-img.jpg" alt="Обложки нет" class="cart__image">
 
-              <button class="cart__label">хочу прочитать</button>
+              <p class="cart__label">хочу прочитать</p>
             </div>
 
             <div class="cart__content">
@@ -254,7 +262,7 @@
 <section class="book hide">
   <header class="book__header header">
     <div class="container header__container">
-      <button class="header__btn header__btn_back" id="goBack"></button>
+      <button class="header__btn header__btn_back"></button>
       <button class="header__btn header__btn_delete"></button>
     </div>
   </header>
@@ -282,7 +290,14 @@
 
       <h3 class="book__subtitle">Описание</h3>
 
-      <p class="book__description">Главный герой — Уинстон Смит — живёт в Лондоне, работает в Министерстве правды и является членом внешней партии. Он не разделяет партийные лозунги и идеологию и в глубине души сильно сомневается в партии, окружающей действительности и вообще во всём том, в чём только можно сомневаться. Чтобы «выпустить пар» и не совершить какой-нибудь безрассудный поступок, ведёт дневник, в котором старается излагать все свои сомнения. На людях же притворяется приверженцем партийных идей. Однако опасается, что девушка Джулия, работающая в том же министерстве, шпионит за ним и хочет разоблачить его. В то же время полагает, что высокопоставленный сотрудник их министерства, член внутренней партии некий О’Брайен также не разделяет мнения партии и является подпольным революционером.</p>
+      <p class="book__description">Главный герой — Уинстон Смит — живёт в Лондоне, работает в Министерстве правды и
+        является членом внешней партии. Он не разделяет партийные лозунги и идеологию и в глубине души сильно
+        сомневается в партии, окружающей действительности и вообще во всём том, в чём только можно сомневаться. Чтобы
+        «выпустить пар» и не совершить какой-нибудь безрассудный поступок, ведёт дневник, в котором старается излагать
+        все свои сомнения. На людях же притворяется приверженцем партийных идей. Однако опасается, что девушка Джулия,
+        работающая в том же министерстве, шпионит за ним и хочет разоблачить его. В то же время полагает, что
+        высокопоставленный сотрудник их министерства, член внутренней партии некий О’Брайен также не разделяет мнения
+        партии и является подпольным революционером.</p>
 
     </div>
     <div class="footer">
@@ -296,23 +311,100 @@
 
 
 <section class="add hide">
-  <header class="add__header header">
+  <header class="book__header header">
     <div class="container header__container">
-      <button class="header__back-btn"></button>
-      <button class="header__search-btn"></button>
+      <button class="header__btn header__btn_back"></button>
+      <button class="header__btn header__btn_delete"></button>
     </div>
   </header>
 
-  <div class="container">
+  <form class="add__form">
+    <div class="container add__container">
+      <fieldset class="add__fieldset ">
+        <legend class="add__title">Название и описание</legend>
 
-    <h2 class="add__title">Название и описание</h2>
+        <p class="add__step">шаг 1/3</p>
 
-    <div class="footer">
-      <button class="footer__btn add__label">Далее</button>
+        <label class="add__label" for="title">Название</label>
+        <input class="add__text" type="text" id="title">
+
+        <label class="add__label" for="author">Автор</label>
+        <input class="add__text" type="text" id="author">
+
+        <label class="add__label" for="description">Описание</label>
+        <textarea class="add__text add__text_area" id="description"></textarea>
+
+      </fieldset>
+
+      <fieldset class="add__fieldset ">
+        <legend class="add__title">Обложка</legend>
+
+        <p class="add__step">шаг 2/3</p>
+
+        <div class="upload">
+          <p class="add__subtitle">Загрузите обложку</p>
+          <label class="upload__label">
+            <img src="about:blank" class="upload__preview" alt="Превью изоюражения">
+            <input type="file" class="upload__file" accept="image/*">
+          </label>
+
+
+        </div>
+
+
+      </fieldset>
+
+      <fieldset class="add__fieldset ">
+        <legend class="add__title">Статус и оценка</legend>
+
+        <p class="add__step">шаг 3/3</p>
+
+
+        <fieldset class="status">
+          <legend class="add__subtitle">Выберите статус книги</legend>
+
+          <div class="status__list">
+            <input class="status__item" type="radio" id="whish" name="label" checked>
+            <label class="status__label" for="whish">хочу прочитать</label>
+
+            <input class="status__item" type="radio" id="ready" name="label">
+            <label class="status__label" for="ready">прочитал</label>
+
+            <input class="status__item" type="radio" id="read" name="label">
+            <label class="status__label" for="read">читаю</label>
+
+            <input class="status__item" type="radio" id="not-finish" name="label">
+            <label class="status__label" for="not-finish">не дочитал</label>
+          </div>
+
+        </fieldset>
+
+        <fieldset class="star">
+          <legend class="add__subtitle">Поставьте оценку</legend>
+
+          <div class="star__list">
+            <input class="star__input" id="star-rating-5" type="radio" name="rating" value="5">
+            <label class="star__ico" for="star-rating-5"></label>
+            <input class="star__input" id="star-rating-4" type="radio" name="rating" value="4">
+            <label class="star__ico" for="star-rating-4"></label>
+            <input class="star__input" id="star-rating-3" type="radio" name="rating" value="3">
+            <label class="star__ico" for="star-rating-3"></label>
+            <input class="star__input" id="star-rating-2" type="radio" name="rating" value="2">
+            <label class="star__ico" for="star-rating-2"></label>
+            <input class="star__input" id="star-rating-1" type="radio" name="rating" value="1">
+            <label class="star__ico" for="star-rating-1"></label>
+          </div>
+        </fieldset>
+
+
+      </fieldset>
     </div>
 
-  </div>
 
+    <div class="footer add__footer">
+      <button class="footer__btn add__btn">Далее</button>
+    </div>
+  </form>
 
 </section>
 
