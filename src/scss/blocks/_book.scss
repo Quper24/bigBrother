@@ -1,8 +1,13 @@
 .book {
+  padding-bottom: 100px;
   &__container {
-    padding-bottom: 100px;
     @include laptop {
       display: flex;
+      padding-left: 100px;
+    }
+    @include desktop {
+      display: flex;
+      padding-left: 135px;
     }
   }
 
@@ -52,6 +57,7 @@
     }
 
   }
+
   &__label_desktop {
     display: none;
     @include laptop {
@@ -59,7 +65,6 @@
       width: 250px;
     }
   }
-
 
 
   &__title {

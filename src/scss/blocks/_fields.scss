@@ -61,12 +61,17 @@
     }
   }
 
-  &__item {
+  &__button {
     padding: 8px;
     background-color: $secondary;
     border-radius: 16px;
     width: max-content;
+  }
+
+  &__item {
+
     margin-bottom: 15px;
+
 
     &:last-child {
       margin-bottom: 0;
@@ -78,5 +83,7 @@
       width: 142px;
     }
   }
+
+
 
 }
