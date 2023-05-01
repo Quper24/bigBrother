@@ -1,18 +1,23 @@
-@import 'normalize';
+@import "normalize";
 @include normalize();
-@import 'var';
-@import 'fonts';
-@import 'default';
-@import 'blocks/header';
-@import 'blocks/library';
-@import 'blocks/fields';
-@import 'blocks/cart';
-@import 'blocks/footer';
 
-@import 'blocks/book';
+@import "var";
+@import "font";
+@import "default";
 
-@import 'blocks/upload';
-@import 'blocks/status';
-@import 'blocks/star';
+@import "block/header";
+@import "block/library";
+@import "block/fields";
+@import "block/cart";
 
-@import 'blocks/add';
+@import "block/book";
+
+@import "block/add";
+@import "block/upload";
+@import "block/status";
+@import "block/star";
+
+@import "block/search";
+
+@import "block/footer";
+

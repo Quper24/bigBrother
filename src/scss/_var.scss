@@ -1,3 +1,7 @@
+$dark: #000000;
+$dark2: #181818;
+$light: #FFFFFF;
+
 $primary: #F87C09;
 $primaryLight: #FF922E;
 $primaryDark: #AEAAAA;
@@ -5,27 +9,20 @@ $primaryDark: #AEAAAA;
 $secondary: #EAEAEA;
 $secondaryDark: #6B6B6B;
 
-$black: #000;
-$white: #FFF;
-
-$tablet: 768px;
-$laptop: 1024px;
-$desktop: 1280px;
-
 @mixin tablet {
-  @media (min-width: #{$tablet}) {
+  @media (min-width: 768px) {
     @content;
   }
 }
 
 @mixin laptop {
-  @media (min-width: #{$laptop}) {
+  @media (min-width: 1024px) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width: #{$desktop}) {
+  @media (min-width: 1280px) {
     @content;
   }
 }
@@ -37,8 +34,7 @@ $desktop: 1280px;
       weight: $weight;
       display: swap;
     }
-    src: url("../fonts/#{ $name }-#{ $weight }.woff2")  format("woff2"),
-    url("../fonts/#{ $name }-#{ $weight }.woff")  format("woff"),
+    src: url("../fonts/#{ $name }-#{ $weight }.woff2") format("woff2"),
+    url("../fonts/#{ $name }-#{ $weight }.woff") format("woff");
   }
 }
-

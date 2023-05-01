@@ -1,21 +1,21 @@
-'use strict';
-
 // gulp
+
 import gulp from 'gulp';
 import gulpif from 'gulp-if';
 import browserSync from 'browser-sync';
-import rename from 'gulp-rename';
 import plumber from 'gulp-plumber';
 import del from 'del';
+import rename from 'gulp-rename';
 
-// html
-import htmlmin from 'gulp-htmlmin';
+//html
+
+import htmlMin from 'gulp-htmlmin';
 
 // css
+
 import sass from 'sass';
 import gulpSass from 'gulp-sass';
-
-const compSass = gulpSass(sass);
+const scssToCss = gulpSass(sass);
 
 import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'gulp-autoprefixer';
@@ -25,92 +25,87 @@ import {
   stream as critical
 } from 'critical';
 
-// js
-import terser from 'gulp-terser';
-import webpackStream from 'webpack-stream';
-import webpack from 'webpack';
 
-//img
-import gulpImg from 'gulp-image';
+// js
+
+import webpack from 'webpack-stream';
+import terser from 'gulp-terser';
+
+// image
+import gulpImage from 'gulp-image';
 import gulpWebp from 'gulp-webp';
 import gulpAvif from 'gulp-avif';
-import svgSprite from 'gulp-svg-sprite';
+
+
+// server
+
 
 let dev = false;
 
-const path = {
-  dist: {
-    base: 'dist/',
-    html: 'dist/',
-    js: 'dist/js/',
-    css: 'dist/css/',
-    cssIndex: 'dist/css/index.min.css',
-    img: 'dist/img/',
-    fonts: 'dist/fonts/',
-  },
+const myPath = {
   src: {
     base: 'src/',
     html: 'src/*.html',
     scss: 'src/scss/**/*.scss',
     js: 'src/js/index.js',
-    img: 'src/img/**/*.*',
+    img: 'src/img/**/*.{jpg,svg,jpeg,png,gif}',
     imgF: 'src/img/**/*.{jpg,jpeg,png}',
-    assets: ['src/fonts/**/*.*', 'src/icons/**/*.*', 'src/video/**/*.*', 'src/public/**/*.*']
+    assets: ['src/fonts/**/*.*', 'src/icons/**/*.*'],
+  },
+  dist: {
+    base: 'dist/',
+    html: 'dist/',
+    css: 'dist/css/',
+    js: 'dist/js/',
+    img: 'dist/img/',
+
   },
   watch: {
     html: 'src/*.html',
-    js: 'src/**/*.js',
-    css: 'src/**/*.scss',
-    img: 'src/img/**/*.*',
+    scss: 'src/scss/**/*.scss',
+    js: 'src/js/**/*.*',
+    img: 'src/img/**/*.{jpg,svg,jpeg,png,gif}',
     imgF: 'src/img/**/*.{jpg,jpeg,png}',
-  },
+  }
 };
 
-
-//html
 export const html = () => gulp
-  .src(path.src.html)
-  .pipe(gulpif(!dev, htmlmin({
+  .src(myPath.src.html)
+  .pipe(gulpif(!dev, htmlMin({
     removeComments: true,
     collapseWhitespace: true,
   })))
-  .pipe(gulp.dest(path.dist.html))
+  .pipe(gulp.dest(myPath.dist.html))
+  .pipe(browserSync.stream());
+
+export const scss = () => gulp
+  .src(myPath.src.scss)
+  .pipe(gulpif(dev, sourcemaps.init()))
+  .pipe(scssToCss().on('error', scssToCss.logError))
+  .pipe(gulpif(!dev, autoprefixer(({
+    cascade: false,
+  }))))
+  .pipe(gulpif(!dev, gcmq()))
+  .pipe(gulpif(!dev, gulp.dest(myPath.dist.css)))
+  .pipe(gulpif(!dev, cleanCSS({
+    2: {
+      specialComments: 0,
+    }
+  })))
+  .pipe(rename({suffix: '.min'}))
+  .pipe(gulpif(dev, sourcemaps.write()))
+  .pipe(gulp.dest(myPath.dist.css))
   .pipe(browserSync.stream());
 
 
-// css
-export const scss = () =>
-  gulp.src(path.src.scss)
-    .pipe(gulpif(dev, sourcemaps.init()))
-    .pipe(compSass().on('error', compSass.logError))
-    .pipe(gulpif(!dev, autoprefixer({
-      cascade: false,
-      grid: false
-    })))
-    .pipe(gulpif(!dev, gcmq()))
-    .pipe(gulpif(!dev, gulp.dest(path.dist.css)))
-    .pipe(gulpif(!dev, cleanCSS({
-      2: {
-        specialComments: 0,
-      }
-    })))
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(gulpif(dev, sourcemaps.write()))
-    .pipe(gulp.dest(path.dist.css))
-    .pipe(browserSync.stream());
-
-
-// js
-const webpackConf = {
+const configWebpack = {
   mode: dev ? 'development' : 'production',
-  devtool: dev ? 'eval-source-map' : false,
+  devtool: false,
   optimization: {
-    minimize: false
+    minimize: false,
   },
   output: {
-    filename: 'index.js',
+    filename: 'index.js'
   },
   module: {
     rules: []
@@ -118,81 +113,75 @@ const webpackConf = {
 };
 
 if (!dev) {
-  webpackConf.module.rules.push({
+  configWebpack.module.rules.push({
     test: /\.(js)$/,
     exclude: /(node_modules)/,
-    loader: 'babel-loader'
+    loader: 'babel-loader',
+    options:{
+      presets: ['@babel/preset-env'],
+      plugins: ['@babel/plugin-transform-runtime']
+    }
   });
 }
 
 export const js = () => gulp
-  .src(path.src.js)
+  .src(myPath.src.js)
   .pipe(plumber())
-  .pipe(webpackStream(webpackConf, webpack))
-  .pipe(gulpif(!dev, gulp.dest(path.dist.js)))
+  .pipe(webpack(configWebpack))
+  .pipe(gulpif(!dev, gulp.dest(myPath.dist.js)))
   .pipe(gulpif(!dev, terser()))
   .pipe(rename({
-    suffix: '.min'
+    suffix: '.min',
   }))
-  .pipe(gulp.dest(path.dist.js))
+  .pipe(gulpif(!dev, gulp.dest(myPath.dist.js)))
+  .pipe(gulp.dest(myPath.dist.js))
   .pipe(browserSync.stream());
 
 
-export const img = () => gulp
-  .src(path.src.img)
-  .pipe(gulpif(!dev, gulpImg({
+const image = () => gulp
+  .src(myPath.src.img)
+  .pipe(gulpif(!dev, gulpImage({
     optipng: ['-i 1', '-strip all', '-fix', '-o7', '-force'],
     pngquant: ['--speed=1', '--force', 256],
     zopflipng: ['-y', '--lossy_8bit', '--lossy_transparent'],
     jpegRecompress: ['--strip', '--quality', 'medium', '--min', 40, '--max', 80],
     mozjpeg: ['-optimize', '-progressive'],
     gifsicle: ['--optimize'],
-    svgo: true,
+    svgo: ['--enable', 'cleanupIDs', '--disable', 'convertColors']
   })))
-  .pipe(gulp.dest(path.dist.img))
+  .pipe(gulp.dest(myPath.dist.img))
   .pipe(browserSync.stream({
-    once: true
-  }));
+    once: true,
+    })
+  );
 
-
-export const webp = () => gulp
-  .src(path.src.imgF)
+const webp = () => gulp
+  .src(myPath.src.imgF)
   .pipe(gulpWebp({
-    quality: dev ? 100 : 60
+    quality: dev ? 100 : 70
   }))
-  .pipe(gulp.dest(path.dist.img))
+  .pipe(gulp.dest(myPath.dist.img))
   .pipe(browserSync.stream({
-    once: true
-  }));
-
+      once: true,
+    })
+  );
 
 export const avif = () => gulp
-  .src(path.src.imgF)
+  .src(myPath.src.imgF)
   .pipe(gulpAvif({
     quality: dev ? 100 : 50
   }))
-  .pipe(gulp.dest(path.dist.img))
+  .pipe(gulp.dest(myPath.dist.img))
   .pipe(browserSync.stream({
-    once: true
-  }));
-
-export const critCSS = () => gulp
-  .src(path.src.html)
-  .pipe(critical({
-    base: path.dist.base,
-    inline: true,
-    css: [path.dist.cssIndex]
-  }))
-  .on('error', err => {
-    console.error(err.message)
-  })
-  .pipe(gulp.dest(path.dist.base))
+      once: true,
+    })
+  );
 
 export const copy = () => gulp
-  .src(path.src.assets, {
-    base: path.src.base
+  .src(myPath.src.assets, {
+    base: myPath.src.base
   })
-  .pipe(gulp.dest(path.dist.base))
+  .pipe(gulp.dest(myPath.dist.base))
   .pipe(browserSync.stream({
     once: true
   }));
@@ -203,22 +192,22 @@ export const server = () => {
     ui: false,
     notify: false,
     host: 'localhost',
-    tunnel: true,
+    // tunnel: true,
     server: {
-      baseDir: 'dist',
+      baseDir: myPath.dist.base,
     }
-  })
+  });
 
-  gulp.watch(path.watch.html, html);
-  gulp.watch(path.watch.css, scss);
-  gulp.watch(path.watch.js, js);
-  gulp.watch(path.watch.img, img);
-  gulp.watch(path.watch.imgF, webp);
-  gulp.watch(path.watch.imgF, avif);
-
+  gulp.watch(myPath.watch.html, html);
+  gulp.watch(myPath.watch.scss, scss);
+  gulp.watch(myPath.watch.js, js);
+  gulp.watch(myPath.watch.img, image);
+  gulp.watch(myPath.watch.imgF, gulp.parallel(webp, avif));
+  gulp.watch(myPath.src.assets, copy);
 };
 
-export const clear = () => del(path.dist.base, {
+
+export const clear = () => del(myPath.dist.base, {
   force: true,
 });
 
@@ -227,9 +216,8 @@ const develop = (ready) => {
   ready();
 };
 
+export const base = gulp.parallel(html, scss, js, image, avif, webp, copy);
 
-export const base = gulp.parallel(html, scss, js, img, webp, avif, copy);
-
-export const build = gulp.series(clear, base, critCSS)
+export const build = gulp.series(clear, base);
 
 export default gulp.series(develop, base, server);

@@ -1,16 +1,17 @@
 {
-  "name": "template-gulp",
+  "name": "librarybigbrother",
   "version": "1.0.0",
-  "description": "Описание",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "",
+  "main": "index.js",
   "type": "module",
-  "repository": "",
+  "scripts": {
+    "build": "gulp build",
+    "start": "gulp",
+    "clear": "gulp clear"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "",
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/plugin-transform-runtime": "^7.17.0",
@@ -31,12 +32,10 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
-    "gulp-svg-sprite": "^1.5.0",
     "gulp-terser": "^2.1.0",
-    "gulp-tinypng-compress": "^1.2.5",
     "gulp-webp": "^4.0.1",
-    "sass": "^1.49.10",
-    "webpack": "^5.70.0",
+    "sass": "^1.49.11",
+    "webpack": "^5.71.0",
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
